@@ -7,13 +7,13 @@ This module contains integration between for popular cloud frameworks and CDI.
 JClouds
 -------
 
-Currently, support for JClouds BlobStore is provided.
+Configuration and injection of the JClouds BlobStore and ComputeSercice is provided.
 
 
 Infinispan
 ----------
 
-Currently, support for Inifispan's Cache API is provided.
+Configuration and injection of the Inifispan's Cache API is provided, as well as bridging Cache listeners to the CDI event system.
 
 
 Running the tests

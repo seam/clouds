@@ -11,13 +11,11 @@ package org.jboss.seam.jclouds.test.compute;
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import static org.jclouds.compute.predicates.NodePredicates.runningWithTag;
 
 import java.util.Set;
 
@@ -38,45 +36,46 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static org.jclouds.compute.predicates.NodePredicates.runningWithTag;
+
 @RunWith(Arquillian.class)
-public class EC2Test
-{
-   
-   public static final String TAG = "jcloudstest";
+public class EC2Test {
 
-   // Configure Arquillian
-   @Deployment
-   public static Archive<?> deploy()
-   {
-      return ShrinkWrap.create(JavaArchive.class, "test.jar")
-         .addPackage(EC2Test.class.getPackage())
-         .addPackage(JCloudsComputeService.class.getPackage());
-   }
+    public static final String TAG = "jcloudstest";
 
-   // Inject the @EC2TestComputeService ComputeService container, using the 
-   // credentials from the properties file
-   @Inject
-   @EC2TestComputeService @Running
-   private Set<ComputeMetadata> nodes;
-   
-   @Inject @EC2TestComputeService
-   private TemplateBuilder templateBuilder;
-   
-   @Inject @EC2TestComputeService
-   private ComputeService computeService;
-   
-   @Test
-   public void testNode() throws Exception
-   {
-      // Start the default template
-      Template template = templateBuilder.build();
-      // TODO how to test this, for now just check stuff  got injected...
-   }
-   
-   @After
-   public void cleanup()
-   {
-      computeService.destroyNodesMatching(runningWithTag(TAG));
-   }
-   
+    // Configure Arquillian
+    @Deployment
+    public static Archive<?> deploy() {
+        return ShrinkWrap.create(JavaArchive.class, "test.jar")
+                .addPackage(EC2Test.class.getPackage())
+                .addPackage(JCloudsComputeService.class.getPackage());
+    }
+
+    // Inject the @EC2TestComputeService ComputeService container, using the
+    // credentials from the properties file
+    @Inject
+    @EC2TestComputeService
+    @Running
+    private Set<ComputeMetadata> nodes;
+
+    @Inject
+    @EC2TestComputeService
+    private TemplateBuilder templateBuilder;
+
+    @Inject
+    @EC2TestComputeService
+    private ComputeService computeService;
+
+    @Test
+    public void testNode() throws Exception {
+        // Start the default template
+        Template template = templateBuilder.build();
+        // TODO how to test this, for now just check stuff  got injected...
+    }
+
+    @After
+    public void cleanup() {
+        computeService.destroyNodesMatching(runningWithTag(TAG));
+    }
+
 }

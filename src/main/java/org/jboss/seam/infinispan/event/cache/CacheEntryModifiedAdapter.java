@@ -9,59 +9,48 @@ import org.infinispan.notifications.cachelistener.event.CacheEntryModifiedEvent;
 import org.infinispan.transaction.xa.GlobalTransaction;
 
 @Listener
-public class CacheEntryModifiedAdapter extends AbstractAdapter<CacheEntryModifiedEvent>
-{
-   
-   public static final CacheEntryModifiedEvent EMTPTY = new CacheEntryModifiedEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
+public class CacheEntryModifiedAdapter extends AbstractAdapter<CacheEntryModifiedEvent> {
 
-      public Object getKey()
-      {
-         return null;
-      }
+    public static final CacheEntryModifiedEvent EMTPTY = new CacheEntryModifiedEvent() {
 
-      public GlobalTransaction getGlobalTransaction()
-      {
-         return null;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public boolean isOriginLocal()
-      {
-         // TODO Auto-generated method stub
-         return false;
-      }
+        public Object getKey() {
+            return null;
+        }
 
-      public boolean isPre()
-      {
-         return false;
-      }
+        public GlobalTransaction getGlobalTransaction() {
+            return null;
+        }
 
-      public Cache<?, ?> getCache()
-      {
-         return null;
-      }
-      
-      public Object getValue() 
-      {
-         return null;
-      }
-      
-   };
+        public boolean isOriginLocal() {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-   public CacheEntryModifiedAdapter(Event<CacheEntryModifiedEvent> event)
-   {
-      super(event);
-   }
-   
-   @CacheEntryModified
-   public void fire(CacheEntryModifiedEvent payload)
-   {
-      super.fire(payload);
-   }
+        public boolean isPre() {
+            return false;
+        }
+
+        public Cache<?, ?> getCache() {
+            return null;
+        }
+
+        public Object getValue() {
+            return null;
+        }
+
+    };
+
+    public CacheEntryModifiedAdapter(Event<CacheEntryModifiedEvent> event) {
+        super(event);
+    }
+
+    @CacheEntryModified
+    public void fire(CacheEntryModifiedEvent payload) {
+        super.fire(payload);
+    }
 
 }

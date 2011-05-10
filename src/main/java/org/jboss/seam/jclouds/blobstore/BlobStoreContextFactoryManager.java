@@ -9,21 +9,18 @@ import org.jboss.weld.extensions.bean.defaultbean.DefaultBean;
 import org.jclouds.blobstore.BlobStoreContextFactory;
 
 @ApplicationScoped
-public class BlobStoreContextFactoryManager
-{
+public class BlobStoreContextFactoryManager {
 
-   private final BlobStoreContextFactory factory;
+    private final BlobStoreContextFactory factory;
 
-   public BlobStoreContextFactoryManager() throws IOException
-   {
-      this.factory = new BlobStoreContextFactory();
-   }
+    public BlobStoreContextFactoryManager() throws IOException {
+        this.factory = new BlobStoreContextFactory();
+    }
 
-   @Produces
-   @DefaultBean(BlobStoreContextFactory.class)
-   public BlobStoreContextFactory getBlobStoreContextFactory()
-   {
-      return factory;
-   }
+    @Produces
+    @DefaultBean(BlobStoreContextFactory.class)
+    public BlobStoreContextFactory getBlobStoreContextFactory() {
+        return factory;
+    }
 
 }

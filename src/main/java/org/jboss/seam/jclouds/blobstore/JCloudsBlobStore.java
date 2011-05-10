@@ -9,18 +9,12 @@
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
 package org.jboss.seam.jclouds.blobstore;
-
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.METHOD;
-import static java.lang.annotation.ElementType.PARAMETER;
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -28,27 +22,30 @@ import java.util.Properties;
 
 import org.jboss.weld.extensions.bean.generic.GenericType;
 
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.PARAMETER;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 /**
  * Configure a JClouds blob store service
- * 
+ *
  * @author Pete Muir
- * 
  */
 
 @Retention(RUNTIME)
-@Target({ METHOD, FIELD, PARAMETER, TYPE })
+@Target({METHOD, FIELD, PARAMETER, TYPE})
 @GenericType(Properties.class)
-public @interface JCloudsBlobStore
-{
+public @interface JCloudsBlobStore {
 
-   /**
-    * The provider you are using (see
-    * http://code.google.com/p/jclouds/wiki/JCloudsComputeService
-    * #Supported_Providers)
-    * 
-    */
-   String provider();
+    /**
+     * The provider you are using (see
+     * http://code.google.com/p/jclouds/wiki/JCloudsComputeService
+     * #Supported_Providers)
+     */
+    String provider();
 
-   String container() default "";
+    String container() default "";
 
 }

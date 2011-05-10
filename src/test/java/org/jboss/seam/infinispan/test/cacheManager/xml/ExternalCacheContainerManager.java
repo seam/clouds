@@ -14,38 +14,37 @@ import org.jboss.seam.infinispan.CacheContainerManager;
 import org.jboss.weld.extensions.resourceLoader.Resource;
 
 @Specializes
-public class ExternalCacheContainerManager extends CacheContainerManager
-{
+public class ExternalCacheContainerManager extends CacheContainerManager {
 
-   /**
-    * Create the Cache Container from XML,
-    * @param xml
-    * @return
-    * @throws IOException
-    */
-   public static CacheContainer createCacheContainer(InputStream xml) throws IOException
-   {
-      // Create the cache container from the XML config, and associate with the
-      // producer fields
-      EmbeddedCacheManager cacheManager = new DefaultCacheManager(xml);
+    /**
+     * Create the Cache Container from XML,
+     *
+     * @param xml
+     * @return
+     * @throws IOException
+     */
+    public static CacheContainer createCacheContainer(InputStream xml) throws IOException {
+        // Create the cache container from the XML config, and associate with the
+        // producer fields
+        EmbeddedCacheManager cacheManager = new DefaultCacheManager(xml);
 
-      // Define the very-large and quick-very-large configuration, based on the
-      // defaults
-      cacheManager.defineConfiguration("very-large", cacheManager.getDefaultConfiguration().clone());
+        // Define the very-large and quick-very-large configuration, based on the
+        // defaults
+        cacheManager.defineConfiguration("very-large", cacheManager.getDefaultConfiguration().clone());
 
-      Configuration quickVeryLargeConfiguration = cacheManager.getDefaultConfiguration().clone();
-      quickVeryLargeConfiguration.setEvictionWakeUpInterval(1);
-      cacheManager.defineConfiguration("quick-very-large", quickVeryLargeConfiguration);
-      return cacheManager;
-   }
-   
-   // Constructor for proxies only
-   protected ExternalCacheContainerManager() {}
+        Configuration quickVeryLargeConfiguration = cacheManager.getDefaultConfiguration().clone();
+        quickVeryLargeConfiguration.setEvictionWakeUpInterval(1);
+        cacheManager.defineConfiguration("quick-very-large", quickVeryLargeConfiguration);
+        return cacheManager;
+    }
 
-   @Inject
-   public ExternalCacheContainerManager(@Resource("infinispan.xml") InputStream xml) throws IOException
-   {
-      super(createCacheContainer(xml));
-   }
-   
+    // Constructor for proxies only
+    protected ExternalCacheContainerManager() {
+    }
+
+    @Inject
+    public ExternalCacheContainerManager(@Resource("infinispan.xml") InputStream xml) throws IOException {
+        super(createCacheContainer(xml));
+    }
+
 }

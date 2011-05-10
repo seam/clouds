@@ -9,49 +9,40 @@ import org.infinispan.notifications.cachelistener.event.TransactionRegisteredEve
 import org.infinispan.transaction.xa.GlobalTransaction;
 
 @Listener
-public class TransactionRegisteredAdapter extends AbstractAdapter<TransactionRegisteredEvent>
-{
-   
-   public static final TransactionRegisteredEvent EMTPTY = new TransactionRegisteredEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
+public class TransactionRegisteredAdapter extends AbstractAdapter<TransactionRegisteredEvent> {
 
-      public GlobalTransaction getGlobalTransaction()
-      {
-         return null;
-      }
+    public static final TransactionRegisteredEvent EMTPTY = new TransactionRegisteredEvent() {
 
-      public boolean isOriginLocal()
-      {
-         // TODO Auto-generated method stub
-         return false;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public boolean isPre()
-      {
-         return false;
-      }
+        public GlobalTransaction getGlobalTransaction() {
+            return null;
+        }
 
-      public Cache<?, ?> getCache()
-      {
-         return null;
-      }
-      
-   };
+        public boolean isOriginLocal() {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-   public TransactionRegisteredAdapter(Event<TransactionRegisteredEvent> event)
-   {
-      super(event);
-   }
-   
-   @TransactionRegistered
-   public void fire(TransactionRegisteredEvent payload)
-   {
-      super.fire(payload);
-   }
+        public boolean isPre() {
+            return false;
+        }
+
+        public Cache<?, ?> getCache() {
+            return null;
+        }
+
+    };
+
+    public TransactionRegisteredAdapter(Event<TransactionRegisteredEvent> event) {
+        super(event);
+    }
+
+    @TransactionRegistered
+    public void fire(TransactionRegisteredEvent payload) {
+        super.fire(payload);
+    }
 
 }

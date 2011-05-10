@@ -9,53 +9,43 @@ import org.infinispan.notifications.cachelistener.event.CacheEntryActivatedEvent
 import org.infinispan.transaction.xa.GlobalTransaction;
 
 @Listener
-public class CacheEntryActivatedAdapter extends AbstractAdapter<CacheEntryActivatedEvent>
-{
-   
-   public static final CacheEntryActivatedEvent EMTPTY = new CacheEntryActivatedEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
+public class CacheEntryActivatedAdapter extends AbstractAdapter<CacheEntryActivatedEvent> {
 
-      public Object getKey()
-      {
-         return null;
-      }
+    public static final CacheEntryActivatedEvent EMTPTY = new CacheEntryActivatedEvent() {
 
-      public GlobalTransaction getGlobalTransaction()
-      {
-         return null;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public boolean isOriginLocal()
-      {
-         // TODO Auto-generated method stub
-         return false;
-      }
+        public Object getKey() {
+            return null;
+        }
 
-      public boolean isPre()
-      {
-         return false;
-      }
+        public GlobalTransaction getGlobalTransaction() {
+            return null;
+        }
 
-      public Cache<?, ?> getCache()
-      {
-         return null;
-      }
-   };
+        public boolean isOriginLocal() {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-   public CacheEntryActivatedAdapter(Event<CacheEntryActivatedEvent> event)
-   {
-      super(event);
-   }
-   
-   @CacheEntryActivated
-   public void fire(CacheEntryActivatedEvent payload)
-   {
-      super.fire(payload);
-   }
+        public boolean isPre() {
+            return false;
+        }
+
+        public Cache<?, ?> getCache() {
+            return null;
+        }
+    };
+
+    public CacheEntryActivatedAdapter(Event<CacheEntryActivatedEvent> event) {
+        super(event);
+    }
+
+    @CacheEntryActivated
+    public void fire(CacheEntryActivatedEvent payload) {
+        super.fire(payload);
+    }
 
 }

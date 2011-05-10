@@ -11,14 +11,11 @@ package org.jboss.seam.jclouds.test.blobstore;
  * You may obtain a copy of the License at
  * http://www.apache.org/licenses/LICENSE-2.0
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,  
+ * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import javax.inject.Inject;
 
@@ -35,40 +32,40 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 @RunWith(Arquillian.class)
 @Ignore
-public class TransientTest
-{
- 
-   /**
-    * Enable the transient blob store alternative
-    */
-   public static final Asset BEANS_XML = new ByteArrayAsset(("<beans><alternatives><class>" + TransientBlobStoreProducer.class.getName() + "</class></alternatives></beans>").getBytes());
+public class TransientTest {
 
-   // Configure the object name
-   private static final String KEY = "testblob";
+    /**
+     * Enable the transient blob store alternative
+     */
+    public static final Asset BEANS_XML = new ByteArrayAsset(("<beans><alternatives><class>" + TransientBlobStoreProducer.class.getName() + "</class></alternatives></beans>").getBytes());
 
-   // Configure Arquillian
-   @Deployment
-   public static Archive<?> deploy()
-   {
-      return ShrinkWrap.create(JavaArchive.class, "test.jar")
-         .addPackage(TransientTest.class.getPackage())
-         .addPackage(JCloudsBlobStore.class.getPackage())
-         .addManifestResource(BEANS_XML, "beans.xml");
-   }
+    // Configure the object name
+    private static final String KEY = "testblob";
 
-   @Inject
-   private Consumer consumer;
+    // Configure Arquillian
+    @Deployment
+    public static Archive<?> deploy() {
+        return ShrinkWrap.create(JavaArchive.class, "test.jar")
+                .addPackage(TransientTest.class.getPackage())
+                .addPackage(JCloudsBlobStore.class.getPackage())
+                .addManifestResource(BEANS_XML, "beans.xml");
+    }
 
-   @Test
-   public void test() throws Exception
-   {
-      consumer.putInBlobStore(KEY, "Pete!");
-      assertTrue(consumer.getBlobStore() instanceof TransientAsyncBlobStore);
-      String result = consumer.getFromBlobStore(KEY);
-      assertEquals("Pete!", result);
-   }
+    @Inject
+    private Consumer consumer;
+
+    @Test
+    public void test() throws Exception {
+        consumer.putInBlobStore(KEY, "Pete!");
+        assertTrue(consumer.getBlobStore() instanceof TransientAsyncBlobStore);
+        String result = consumer.getFromBlobStore(KEY);
+        assertEquals("Pete!", result);
+    }
 
 
 }

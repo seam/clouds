@@ -9,59 +9,48 @@ import org.infinispan.notifications.cachelistener.event.CacheEntryRemovedEvent;
 import org.infinispan.transaction.xa.GlobalTransaction;
 
 @Listener
-public class CacheEntryRemovedAdapter extends AbstractAdapter<CacheEntryRemovedEvent>
-{
-   
-   public static final CacheEntryRemovedEvent EMTPTY = new CacheEntryRemovedEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
+public class CacheEntryRemovedAdapter extends AbstractAdapter<CacheEntryRemovedEvent> {
 
-      public Object getKey()
-      {
-         return null;
-      }
+    public static final CacheEntryRemovedEvent EMTPTY = new CacheEntryRemovedEvent() {
 
-      public GlobalTransaction getGlobalTransaction()
-      {
-         return null;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public boolean isOriginLocal()
-      {
-         // TODO Auto-generated method stub
-         return false;
-      }
+        public Object getKey() {
+            return null;
+        }
 
-      public boolean isPre()
-      {
-         return false;
-      }
+        public GlobalTransaction getGlobalTransaction() {
+            return null;
+        }
 
-      public Cache<?, ?> getCache()
-      {
-         return null;
-      }
-      
-      public Object getValue()
-      {
-         return null;
-      }
-      
-   };
+        public boolean isOriginLocal() {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-   public CacheEntryRemovedAdapter(Event<CacheEntryRemovedEvent> event)
-   {
-      super(event);
-   }
-   
-   @CacheEntryRemoved
-   public void fire(CacheEntryRemovedEvent payload)
-   {
-      super.fire(payload);
-   }
+        public boolean isPre() {
+            return false;
+        }
+
+        public Cache<?, ?> getCache() {
+            return null;
+        }
+
+        public Object getValue() {
+            return null;
+        }
+
+    };
+
+    public CacheEntryRemovedAdapter(Event<CacheEntryRemovedEvent> event) {
+        super(event);
+    }
+
+    @CacheEntryRemoved
+    public void fire(CacheEntryRemovedEvent payload) {
+        super.fire(payload);
+    }
 
 }

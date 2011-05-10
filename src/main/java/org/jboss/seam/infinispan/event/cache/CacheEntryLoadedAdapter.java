@@ -9,53 +9,43 @@ import org.infinispan.notifications.cachelistener.event.CacheEntryLoadedEvent;
 import org.infinispan.transaction.xa.GlobalTransaction;
 
 @Listener
-public class CacheEntryLoadedAdapter extends AbstractAdapter<CacheEntryLoadedEvent>
-{
-   
-   public static final CacheEntryLoadedEvent EMTPTY = new CacheEntryLoadedEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
+public class CacheEntryLoadedAdapter extends AbstractAdapter<CacheEntryLoadedEvent> {
 
-      public Object getKey()
-      {
-         return null;
-      }
+    public static final CacheEntryLoadedEvent EMTPTY = new CacheEntryLoadedEvent() {
 
-      public GlobalTransaction getGlobalTransaction()
-      {
-         return null;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public boolean isOriginLocal()
-      {
-         // TODO Auto-generated method stub
-         return false;
-      }
+        public Object getKey() {
+            return null;
+        }
 
-      public boolean isPre()
-      {
-         return false;
-      }
+        public GlobalTransaction getGlobalTransaction() {
+            return null;
+        }
 
-      public Cache<?, ?> getCache()
-      {
-         return null;
-      }
-   };
+        public boolean isOriginLocal() {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-   public CacheEntryLoadedAdapter(Event<CacheEntryLoadedEvent> event)
-   {
-      super(event);
-   }
-   
-   @CacheEntryLoaded
-   public void fire(CacheEntryLoadedEvent payload)
-   {
-      super.fire(payload);
-   }
+        public boolean isPre() {
+            return false;
+        }
+
+        public Cache<?, ?> getCache() {
+            return null;
+        }
+    };
+
+    public CacheEntryLoadedAdapter(Event<CacheEntryLoadedEvent> event) {
+        super(event);
+    }
+
+    @CacheEntryLoaded
+    public void fire(CacheEntryLoadedEvent payload) {
+        super.fire(payload);
+    }
 
 }

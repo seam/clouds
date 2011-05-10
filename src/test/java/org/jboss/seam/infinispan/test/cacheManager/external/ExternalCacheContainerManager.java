@@ -9,27 +9,24 @@ import org.infinispan.manager.EmbeddedCacheManager;
 import org.jboss.seam.infinispan.CacheContainerManager;
 
 @Specializes
-public class ExternalCacheContainerManager extends CacheContainerManager
-{
+public class ExternalCacheContainerManager extends CacheContainerManager {
 
-   private static final CacheContainer CACHE_CONTAINER;
+    private static final CacheContainer CACHE_CONTAINER;
 
-   static
-   {
-      EmbeddedCacheManager cacheManager = new DefaultCacheManager();
-      Configuration largeConfiguration = new Configuration();
-      largeConfiguration.setEvictionMaxEntries(100);
-      cacheManager.defineConfiguration("large", largeConfiguration);
+    static {
+        EmbeddedCacheManager cacheManager = new DefaultCacheManager();
+        Configuration largeConfiguration = new Configuration();
+        largeConfiguration.setEvictionMaxEntries(100);
+        cacheManager.defineConfiguration("large", largeConfiguration);
 
-      Configuration quickConfiguration = new Configuration();
-      quickConfiguration.setEvictionWakeUpInterval(1);
-      cacheManager.defineConfiguration("quick", quickConfiguration);
+        Configuration quickConfiguration = new Configuration();
+        quickConfiguration.setEvictionWakeUpInterval(1);
+        cacheManager.defineConfiguration("quick", quickConfiguration);
 
-      CACHE_CONTAINER = cacheManager;
-   }
+        CACHE_CONTAINER = cacheManager;
+    }
 
-   public ExternalCacheContainerManager()
-   {
-      super(CACHE_CONTAINER);
-   }
+    public ExternalCacheContainerManager() {
+        super(CACHE_CONTAINER);
+    }
 }

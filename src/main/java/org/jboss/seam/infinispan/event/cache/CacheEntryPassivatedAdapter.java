@@ -9,53 +9,43 @@ import org.infinispan.notifications.cachelistener.event.CacheEntryPassivatedEven
 import org.infinispan.transaction.xa.GlobalTransaction;
 
 @Listener
-public class CacheEntryPassivatedAdapter extends AbstractAdapter<CacheEntryPassivatedEvent>
-{
-   
-   public static final CacheEntryPassivatedEvent EMTPTY = new CacheEntryPassivatedEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
+public class CacheEntryPassivatedAdapter extends AbstractAdapter<CacheEntryPassivatedEvent> {
 
-      public Object getKey()
-      {
-         return null;
-      }
+    public static final CacheEntryPassivatedEvent EMTPTY = new CacheEntryPassivatedEvent() {
 
-      public GlobalTransaction getGlobalTransaction()
-      {
-         return null;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public boolean isOriginLocal()
-      {
-         // TODO Auto-generated method stub
-         return false;
-      }
+        public Object getKey() {
+            return null;
+        }
 
-      public boolean isPre()
-      {
-         return false;
-      }
+        public GlobalTransaction getGlobalTransaction() {
+            return null;
+        }
 
-      public Cache<?, ?> getCache()
-      {
-         return null;
-      }
-   };
+        public boolean isOriginLocal() {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-   public CacheEntryPassivatedAdapter(Event<CacheEntryPassivatedEvent> event)
-   {
-      super(event);
-   }
-   
-   @CacheEntryPassivated
-   public void fire(CacheEntryPassivatedEvent payload)
-   {
-      super.fire(payload);
-   }
+        public boolean isPre() {
+            return false;
+        }
+
+        public Cache<?, ?> getCache() {
+            return null;
+        }
+    };
+
+    public CacheEntryPassivatedAdapter(Event<CacheEntryPassivatedEvent> event) {
+        super(event);
+    }
+
+    @CacheEntryPassivated
+    public void fire(CacheEntryPassivatedEvent payload) {
+        super.fire(payload);
+    }
 
 }

@@ -11,24 +11,22 @@ import org.jboss.seam.infinispan.InfinispanExtension;
 import org.jboss.seam.infinispan.event.cachemanager.CacheManagerEventBridge;
 
 @Specializes
-public class ExternalCacheContainerManager extends CacheContainerManager
-{
+public class ExternalCacheContainerManager extends CacheContainerManager {
 
-   private static final EmbeddedCacheManager CACHE_CONTAINER;
+    private static final EmbeddedCacheManager CACHE_CONTAINER;
 
-   static
-   {
-      Configuration defaultConfiguration = new Configuration();
-      defaultConfiguration.setEvictionMaxEntries(7);
-      CACHE_CONTAINER = new DefaultCacheManager(defaultConfiguration);
-   }
-   
-   // Constructor for proxies only
-   protected ExternalCacheContainerManager() {}
+    static {
+        Configuration defaultConfiguration = new Configuration();
+        defaultConfiguration.setEvictionMaxEntries(7);
+        CACHE_CONTAINER = new DefaultCacheManager(defaultConfiguration);
+    }
 
-   @Inject
-   public ExternalCacheContainerManager(InfinispanExtension extension, CacheManagerEventBridge eventBridge)
-   {
-      super(registerObservers(CACHE_CONTAINER, extension, eventBridge));
-   }
+    // Constructor for proxies only
+    protected ExternalCacheContainerManager() {
+    }
+
+    @Inject
+    public ExternalCacheContainerManager(InfinispanExtension extension, CacheManagerEventBridge eventBridge) {
+        super(registerObservers(CACHE_CONTAINER, extension, eventBridge));
+    }
 }

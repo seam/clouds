@@ -11,57 +11,46 @@ import org.infinispan.notifications.cachemanagerlistener.event.ViewChangedEvent;
 import org.infinispan.remoting.transport.Address;
 
 @Listener
-public class ViewChangedAdapter extends AbstractAdapter<ViewChangedEvent>
-{
-   
-   public static final ViewChangedEvent EMTPTY = new ViewChangedEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
-      
-      public EmbeddedCacheManager getCacheManager()
-      {
-         return null;
-      }
+public class ViewChangedAdapter extends AbstractAdapter<ViewChangedEvent> {
 
-      public List<Address> getNewMembers()
-      {
-         return null;
-      }
+    public static final ViewChangedEvent EMTPTY = new ViewChangedEvent() {
 
-      public List<Address> getOldMembers()
-      {
-         return null;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public Address getLocalAddress()
-      {
-         return null;
-      }
+        public EmbeddedCacheManager getCacheManager() {
+            return null;
+        }
 
-      public boolean isNeedsToRejoin()
-      {
-         return false;
-      }
+        public List<Address> getNewMembers() {
+            return null;
+        }
 
-      public int getViewId()
-      {
-         return 0;
-      }
-   };
+        public List<Address> getOldMembers() {
+            return null;
+        }
 
-   public ViewChangedAdapter(Event<ViewChangedEvent> event)
-   {
-      super(event);
-   }
-   
-   @ViewChanged
-   public void fire(ViewChangedEvent payload)
-   {
-      super.fire(payload);
-   }
+        public Address getLocalAddress() {
+            return null;
+        }
+
+        public boolean isNeedsToRejoin() {
+            return false;
+        }
+
+        public int getViewId() {
+            return 0;
+        }
+    };
+
+    public ViewChangedAdapter(Event<ViewChangedEvent> event) {
+        super(event);
+    }
+
+    @ViewChanged
+    public void fire(ViewChangedEvent payload) {
+        super.fire(payload);
+    }
 
 }

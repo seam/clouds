@@ -9,53 +9,43 @@ import org.infinispan.notifications.cachelistener.event.CacheEntryCreatedEvent;
 import org.infinispan.transaction.xa.GlobalTransaction;
 
 @Listener
-public class CacheEntryCreatedAdapter extends AbstractAdapter<CacheEntryCreatedEvent>
-{
-   
-   public static final CacheEntryCreatedEvent EMTPTY = new CacheEntryCreatedEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
+public class CacheEntryCreatedAdapter extends AbstractAdapter<CacheEntryCreatedEvent> {
 
-      public Object getKey()
-      {
-         return null;
-      }
+    public static final CacheEntryCreatedEvent EMTPTY = new CacheEntryCreatedEvent() {
 
-      public GlobalTransaction getGlobalTransaction()
-      {
-         return null;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public boolean isOriginLocal()
-      {
-         // TODO Auto-generated method stub
-         return false;
-      }
+        public Object getKey() {
+            return null;
+        }
 
-      public boolean isPre()
-      {
-         return false;
-      }
+        public GlobalTransaction getGlobalTransaction() {
+            return null;
+        }
 
-      public Cache<?, ?> getCache()
-      {
-         return null;
-      }
-   };
+        public boolean isOriginLocal() {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-   public CacheEntryCreatedAdapter(Event<CacheEntryCreatedEvent> event)
-   {
-      super(event);
-   }
-   
-   @CacheEntryCreated
-   public void fire(CacheEntryCreatedEvent payload)
-   {
-      super.fire(payload);
-   }
+        public boolean isPre() {
+            return false;
+        }
+
+        public Cache<?, ?> getCache() {
+            return null;
+        }
+    };
+
+    public CacheEntryCreatedAdapter(Event<CacheEntryCreatedEvent> event) {
+        super(event);
+    }
+
+    @CacheEntryCreated
+    public void fire(CacheEntryCreatedEvent payload) {
+        super.fire(payload);
+    }
 
 }

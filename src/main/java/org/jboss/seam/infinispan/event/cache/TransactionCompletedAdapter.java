@@ -9,54 +9,44 @@ import org.infinispan.notifications.cachelistener.event.TransactionCompletedEven
 import org.infinispan.transaction.xa.GlobalTransaction;
 
 @Listener
-public class TransactionCompletedAdapter extends AbstractAdapter<TransactionCompletedEvent>
-{
-   
-   public static final TransactionCompletedEvent EMTPTY = new TransactionCompletedEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
+public class TransactionCompletedAdapter extends AbstractAdapter<TransactionCompletedEvent> {
 
-      public GlobalTransaction getGlobalTransaction()
-      {
-         return null;
-      }
+    public static final TransactionCompletedEvent EMTPTY = new TransactionCompletedEvent() {
 
-      public boolean isOriginLocal()
-      {
-         // TODO Auto-generated method stub
-         return false;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public boolean isPre()
-      {
-         return false;
-      }
+        public GlobalTransaction getGlobalTransaction() {
+            return null;
+        }
 
-      public Cache<?, ?> getCache()
-      {
-         return null;
-      }
-      
-      public boolean isTransactionSuccessful()
-      {
-         return false;
-      }
-      
-   };
+        public boolean isOriginLocal() {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-   public TransactionCompletedAdapter(Event<TransactionCompletedEvent> event)
-   {
-      super(event);
-   }
-   
-   @TransactionCompleted
-   public void fire(TransactionCompletedEvent payload)
-   {
-      super.fire(payload);
-   }
+        public boolean isPre() {
+            return false;
+        }
+
+        public Cache<?, ?> getCache() {
+            return null;
+        }
+
+        public boolean isTransactionSuccessful() {
+            return false;
+        }
+
+    };
+
+    public TransactionCompletedAdapter(Event<TransactionCompletedEvent> event) {
+        super(event);
+    }
+
+    @TransactionCompleted
+    public void fire(TransactionCompletedEvent payload) {
+        super.fire(payload);
+    }
 
 }

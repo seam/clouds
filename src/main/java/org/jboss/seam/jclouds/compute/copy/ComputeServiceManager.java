@@ -1,7 +1,5 @@
 package org.jboss.seam.jclouds.compute.copy;
 
-import static org.jboss.weld.extensions.reflection.Reflections.cast;
-
 import java.util.Set;
 
 import javax.enterprise.inject.Produces;
@@ -21,71 +19,64 @@ import org.jclouds.compute.options.TemplateOptions;
 import org.jclouds.domain.Location;
 import org.jclouds.rest.RestContext;
 
+import static org.jboss.weld.extensions.reflection.Reflections.cast;
+
 @GenericConfiguration(JCloudsComputeService.class)
-public class ComputeServiceManager
-{
-   
-   @Inject @Generic
-   private ComputeServiceContext context;
-   
-   @Produces
-   public ComputeService getComputeService()
-   {
-      return context.getComputeService();
-   }
-   
-   @Produces @Running
-   public Set<ComputeMetadata> getNodes()
-   {
-      return cast(getComputeService().listNodes());
-   }
-   
-   @Produces
-   public Set<Location> getAssignableLocations()
-   {
-      return cast(getComputeService().listAssignableLocations());
-   }
-   
-   @Produces
-   public Set<Hardware> getHardwareProfiles()
-   {
-      return cast(getComputeService().listHardwareProfiles());
-   }
-   
-   @Produces
-   public Set<Image> getImages()
-   {
-      return cast(getComputeService().listImages());
-   }
-   
-   @Produces
-   public LoadBalancerService getLoadBalancerService()
-   {
-      return context.getLoadBalancerService();
-   }
-   
-   @Produces
-   public <S, A> RestContext<S, A> getProviderSpecificContext()
-   {
-      return context.getProviderSpecificContext();
-   }
-   
-   @Produces
-   public TemplateBuilder getTemplateBuilder()
-   {
-      return getComputeService().templateBuilder();
-   }
-   
-   @Produces
-   public TemplateOptions getTemplateOptions()
-   {
-      return getComputeService().templateOptions();
-   }
-   
-   @Produces 
-   public Utils getUtils()
-   {
-      return context.getUtils();
-   }
-   
+public class ComputeServiceManager {
+
+    @Inject
+    @Generic
+    private ComputeServiceContext context;
+
+    @Produces
+    public ComputeService getComputeService() {
+        return context.getComputeService();
+    }
+
+    @Produces
+    @Running
+    public Set<ComputeMetadata> getNodes() {
+        return cast(getComputeService().listNodes());
+    }
+
+    @Produces
+    public Set<Location> getAssignableLocations() {
+        return cast(getComputeService().listAssignableLocations());
+    }
+
+    @Produces
+    public Set<Hardware> getHardwareProfiles() {
+        return cast(getComputeService().listHardwareProfiles());
+    }
+
+    @Produces
+    public Set<Image> getImages() {
+        return cast(getComputeService().listImages());
+    }
+
+    @Produces
+    public LoadBalancerService getLoadBalancerService() {
+        return context.getLoadBalancerService();
+    }
+
+    @Produces
+    public <S, A> RestContext<S, A> getProviderSpecificContext() {
+        return context.getProviderSpecificContext();
+    }
+
+    @Produces
+    public TemplateBuilder getTemplateBuilder() {
+        return getComputeService().templateBuilder();
+    }
+
+    @Produces
+    public TemplateOptions getTemplateOptions() {
+        return getComputeService().templateOptions();
+    }
+
+    @Produces
+    public Utils getUtils() {
+        return context.getUtils();
+    }
+
 }

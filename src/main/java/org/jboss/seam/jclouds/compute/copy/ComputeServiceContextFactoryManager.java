@@ -9,21 +9,18 @@ import org.jboss.weld.extensions.bean.defaultbean.DefaultBean;
 import org.jclouds.compute.ComputeServiceContextFactory;
 
 @ApplicationScoped
-public class ComputeServiceContextFactoryManager
-{
+public class ComputeServiceContextFactoryManager {
 
-   private final ComputeServiceContextFactory factory;
+    private final ComputeServiceContextFactory factory;
 
-   public ComputeServiceContextFactoryManager() throws IOException
-   {
-      this.factory = new ComputeServiceContextFactory();
-   }
+    public ComputeServiceContextFactoryManager() throws IOException {
+        this.factory = new ComputeServiceContextFactory();
+    }
 
-   @Produces
-   @DefaultBean(ComputeServiceContextFactory.class)
-   public ComputeServiceContextFactory getComputeServiceContextFactory()
-   {
-      return factory;
-   }
+    @Produces
+    @DefaultBean(ComputeServiceContextFactory.class)
+    public ComputeServiceContextFactory getComputeServiceContextFactory() {
+        return factory;
+    }
 
 }

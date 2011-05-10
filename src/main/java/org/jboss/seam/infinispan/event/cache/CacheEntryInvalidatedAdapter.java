@@ -9,53 +9,43 @@ import org.infinispan.notifications.cachelistener.event.CacheEntryInvalidatedEve
 import org.infinispan.transaction.xa.GlobalTransaction;
 
 @Listener
-public class CacheEntryInvalidatedAdapter extends AbstractAdapter<CacheEntryInvalidatedEvent>
-{
-   
-   public static final CacheEntryInvalidatedEvent EMTPTY = new CacheEntryInvalidatedEvent()
-   {
-      
-      public Type getType()
-      {
-         return null;
-      }
+public class CacheEntryInvalidatedAdapter extends AbstractAdapter<CacheEntryInvalidatedEvent> {
 
-      public Object getKey()
-      {
-         return null;
-      }
+    public static final CacheEntryInvalidatedEvent EMTPTY = new CacheEntryInvalidatedEvent() {
 
-      public GlobalTransaction getGlobalTransaction()
-      {
-         return null;
-      }
+        public Type getType() {
+            return null;
+        }
 
-      public boolean isOriginLocal()
-      {
-         // TODO Auto-generated method stub
-         return false;
-      }
+        public Object getKey() {
+            return null;
+        }
 
-      public boolean isPre()
-      {
-         return false;
-      }
+        public GlobalTransaction getGlobalTransaction() {
+            return null;
+        }
 
-      public Cache<?, ?> getCache()
-      {
-         return null;
-      }
-   };
+        public boolean isOriginLocal() {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-   public CacheEntryInvalidatedAdapter(Event<CacheEntryInvalidatedEvent> event)
-   {
-      super(event);
-   }
-   
-   @CacheEntryInvalidated
-   public void fire(CacheEntryInvalidatedEvent payload)
-   {
-      super.fire(payload);
-   }
+        public boolean isPre() {
+            return false;
+        }
+
+        public Cache<?, ?> getCache() {
+            return null;
+        }
+    };
+
+    public CacheEntryInvalidatedAdapter(Event<CacheEntryInvalidatedEvent> event) {
+        super(event);
+    }
+
+    @CacheEntryInvalidated
+    public void fire(CacheEntryInvalidatedEvent payload) {
+        super.fire(payload);
+    }
 
 }

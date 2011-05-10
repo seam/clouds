@@ -13,27 +13,26 @@ import org.jclouds.compute.ComputeServiceContext;
 import org.jclouds.compute.ComputeServiceContextFactory;
 
 @GenericConfiguration(JCloudsComputeService.class)
-public class ComputeServiceContextManager
-{
-   
-   @Inject
-   private ComputeServiceContextFactory factory;
-   
-   @Inject @Generic
-   private Properties properties;
-   
-   @Inject
-   private JCloudsComputeService config;
-   
-   @Produces @Default
-   public ComputeServiceContext getContext()
-   {
-      return this.factory.createContext(config.provider(), properties);
-   }
-   
-   public void cleanup(@Disposes @Generic ComputeServiceContext context)
-   {
-      context.close();
-   }
-   
+public class ComputeServiceContextManager {
+
+    @Inject
+    private ComputeServiceContextFactory factory;
+
+    @Inject
+    @Generic
+    private Properties properties;
+
+    @Inject
+    private JCloudsComputeService config;
+
+    @Produces
+    @Default
+    public ComputeServiceContext getContext() {
+        return this.factory.createContext(config.provider(), properties);
+    }
+
+    public void cleanup(@Disposes @Generic ComputeServiceContext context) {
+        context.close();
+    }
+
 }
